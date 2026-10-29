@@ -1,0 +1,21 @@
+{% comment %}
+  image: full-size file opened on click (image or .mp4).
+  thumb: optional small image shown on the page (defaults to image).
+  video: optional small looping .mp4 shown instead of a still thumbnail.
+{% endcomment %}
+{% if include.image %}
+{% assign thumb = include.thumb | default: include.image %}
+<div class="engagement-thumbnail">
+  {% if include.video %}
+  <a href="{{ include.image }}">
+    <video autoplay loop muted playsinline preload="auto"{% if include.thumb %} poster="{{ include.thumb }}"{% endif %} aria-label="{{ include.alt | default: 'Engagement thumbnail' }}">
+      <source src="{{ include.video }}" type="video/mp4">
+    </video>
+  </a>
+  {% else %}
+  <a href="{{ include.image }}" class="image-popup">
+    <img src="{{ thumb }}" alt="{{ include.alt | default: 'Engagement thumbnail' }}" loading="lazy" decoding="async">
+  </a>
+  {% endif %}
+</div>
+{% endif %}

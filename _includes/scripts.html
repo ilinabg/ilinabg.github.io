@@ -1,0 +1,23 @@
+<script src="{{ base_path }}/assets/js/main.min.js"></script>
+
+<!-- Open external links and files (PDFs, etc.) in a new tab.
+     Skips the top menu, mailto:/tel: links, and treats www and non-www as the same site. -->
+<script>
+  (function () {
+    function bare(host) { return host.replace(/^www\./, ''); }
+    var ownHosts = [bare(window.location.host), bare('{{ site.url | remove: "https://" | remove: "http://" }}')];
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (a.closest('.masthead')) return;
+      if (!/^https?:$/.test(a.protocol)) return;
+      var external = ownHosts.indexOf(bare(a.host)) === -1;
+    var isFile = /^\/files\//.test(a.pathname) || /\.(pdf|docx?|pptx?|zip|mp4|webm)$/i.test(a.pathname);
+    if (external || isFile) {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    }
+    });
+  })();
+</script>
+
+{% include analytics.html %}
+{% include /comments-providers/scripts.html %}

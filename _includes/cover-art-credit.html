@@ -1,0 +1,11 @@
+{% if include.artist %}
+<span class="cover-art-tag">
+  <span class="cover-art-tag__label">Cover art:</span>
+  {% if include.url %}
+    <a href="{{ include.url }}" target="_blank" class="cover-art-tag__link">{{ include.artist }}</a>
+  {% else %}
+    <span class="cover-art-tag__text">{{ include.artist }}</span>
+  {% endif %}
+</span>
+{% endif %}
+

@@ -1,0 +1,501 @@
+/* ==========================================================================
+   ARCHIVE
+   ========================================================================== */
+
+.archive {
+  margin-bottom: 2em;
+
+  @include breakpoint($medium) {
+    @include span(12 of 12);
+  }
+
+  @include breakpoint($large) {
+    @include span(10 of 12 last);
+    @include prefix(0.5 of 12);
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+
+      img {
+        box-shadow: 0 0 10px rgba(#000, 0.25);
+      }
+    }
+  }
+}
+
+// Narrower column for media/public engagement content
+.archive-content-narrow {
+  max-width: 900px;
+  
+  @include breakpoint($small) {
+    max-width: 1000px;
+  }
+  
+  @include breakpoint($large) {
+    max-width: 1100px;
+  }
+}
+
+.archive__subtitle {
+  margin: 1.414em 0 0;
+  padding-bottom: 0.5em;
+  font-size: $type-size-5;
+  color: mix(#fff, $gray, 25%);
+  border-bottom: 1px solid $border-color;
+
+  + .list__item .archive__item-title {
+    margin-top: 0.5em;
+  }
+}
+
+.archive__item-title {
+  margin-bottom: 0.25em;
+  font-family: $sans-serif-narrow;
+
+  a + a {
+    opacity: 0.5;
+  }
+}
+
+/* remove border*/
+.page__content {
+
+  .archive__item-title {
+    margin-top: 1em;
+    border-bottom: none;
+  }
+}
+
+.archive__item-excerpt {
+  margin-top: 0;
+  font-size: $type-size-6;
+
+  & + p {
+    text-indent: 0;
+  }
+}
+
+.archive__item-teaser {
+  border-radius: $border-radius;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.archive__item:hover {
+  .archive__item-teaser {
+    box-shadow: 0 0 10px rgba(#000, 0.25);
+  }
+
+  .archive__item-title {
+    text-decoration: underline;
+  }
+}
+
+
+/*
+   List view
+   ========================================================================== */
+
+.list__item {
+  @include breakpoint($medium) {
+    padding-right: $right-sidebar-width-narrow;
+  }
+
+  @include breakpoint($large) {
+    padding-right: $right-sidebar-width;
+  }
+
+  @include breakpoint($x-large) {
+    padding-right: $right-sidebar-width-wide;
+  }
+
+  .page__meta {
+    margin: 0 0 4px;
+  }
+}
+
+
+/*
+   Grid view
+   ========================================================================== */
+
+.grid__item {
+  margin-bottom: 2em;
+
+  .page__meta {
+    margin: 0 0 4px;
+  }
+
+  .archive__item-title {
+    margin-top: 0.5em;
+    font-size: $type-size-5;
+  }
+
+  .archive__item-excerpt {
+    display: none;
+  }
+
+  @include breakpoint($small) {
+    @include gallery(5 of 10);
+    .archive__item-teaser {
+      max-height: 200px;
+    }
+  }
+
+  @include breakpoint($medium) {
+    margin-left: 0; /* reset before mixin does its thing*/
+    margin-right: 0; /* reset before mixin does its thing*/
+    @include gallery(2.5 of 10);
+
+    .archive__item-teaser {
+      max-height: 120px;
+    }
+
+    .archive__item-excerpt {
+      display: block;
+      font-size: $type-size-6;
+    }
+  }
+}
+
+
+/*
+   Features
+   ========================================================================== */
+
+.feature__wrapper {
+  @include clearfix();
+  margin-bottom: 2em;
+  border-bottom: 1px solid $border-color;
+}
+
+.feature__item {
+  margin-bottom: 2em;
+  font-size: 1.25rem;
+
+  @include breakpoint($small) {
+    margin-bottom: 0;
+    @include gallery(4 of 12);
+
+    .feature__item-teaser {
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+
+  &--left {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      .archive__item-teaser {
+        @include span(5 of 12);
+      }
+
+      .archive__item-body {
+        @include span(7 of 12 last);
+        @include prefix(0.5 of 12);
+        @include suffix(1 of 12);
+      }
+    }
+  }
+
+  &--right {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      text-align: right;
+
+      .archive__item-teaser {
+        @include span(5 of 12 rtl);
+      }
+
+      .archive__item-body {
+        @include span(7 of 12 last rtl);
+        @include prefix(0.5 of 12);
+        @include suffix(1 of 12);
+      }
+    }
+  }
+
+  &--center {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      text-align: center;
+
+      .archive__item-teaser {
+        margin: 0 auto;
+        width: span(5 of 12);
+      }
+
+      .archive__item-body {
+        margin: 0 auto;
+        width: span(7 of 12);
+      }
+    }
+  }
+}
+
+/*
+   Publication thumbnails
+   ========================================================================== */
+
+.publication-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2em; // Space between publications
+  gap: 1.25em; // Gap between content and thumbnail
+
+  @include breakpoint($small) {
+    gap: 1.5em; // Increased gap for larger screens
+  }
+
+  .publication-thumbnail {
+    flex-shrink: 0;
+    align-self: flex-start;
+    width: 150px; // Smaller thumbnail
+    height: 110px;
+    margin-top: 0; // Align with top of content (where title is)
+    
+    @include breakpoint($small) {
+      width: 150px; // Smaller thumbnail
+      height: 110px;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: $border-radius;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Crops images to fill the container
+      border-radius: $border-radius;
+      box-shadow: 0 1px 3px rgba(#000, 0.1);
+      transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(#000, 0.2);
+    }
+  }
+
+  .publication-content {
+    flex: 0 1 60%; // Limit content width to 60% to force more wrapping
+    min-width: 0; // Prevents flex item from overflowing
+    margin-top: 0; // Remove any top margin to align with thumbnail
+    padding-top: 0; // Remove any top padding to align with thumbnail
+    
+    @include breakpoint($small) {
+      flex: 0 1 65%; // Slightly wider on larger screens
+    }
+    
+    @include breakpoint($medium) {
+      flex: 0 1 70%; // Even wider on medium screens
+    }
+  }
+}
+
+/*
+   Engagement items
+   ========================================================================== */
+
+.engagement-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0em;
+  margin-top: -0.3em; // Pull content closer to HR line above
+  gap: 3em;
+  flex-direction: row; // Ensure horizontal layout
+
+  @include breakpoint($small) {
+    gap: 2em; // Increased gap to push thumbnail further right
+  }
+  
+  @include breakpoint($medium) {
+    gap: 3em; // Even larger gap on medium screens
+  }
+  
+}
+
+.engagement-item .engagement-content {
+  flex: 0 1 70%; // Increased content width to give text more space
+  min-width: 0; // Prevents flex item from overflowing
+  margin-top: 0; // Remove any top margin to align with thumbnail
+  padding-top: 0; // Remove any top padding to align with thumbnail
+  
+  p {
+    margin-top: 0; // Remove default paragraph top margin
+  }
+  
+  @include breakpoint($small) {
+    flex: 0 1 65%; // More content width on larger screens
+  }
+  
+  @include breakpoint($medium) {
+    flex: 0 1 70%; // Even more content width on medium screens
+  }
+}
+
+.engagement-item .engagement-thumbnail {
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: 180px;
+  height: 120px;
+  margin: 0;
+  margin-top: 0; // Align with top of content (where title is)
+  margin-left: -1.5em; // Push thumbnail to the right edge
+  margin-right: 0; // Ensure it's at the right edge
+  order: 2; // Ensure thumbnail appears on the right
+  
+  @include breakpoint($small) {
+    width: 220px;
+    height: 120px;
+    margin-left: -1.5em; // Additional margin to push further right on larger screens
+  }
+  
+  @include breakpoint($medium) {
+    margin-left: -1.5em; // Even more margin on medium screens
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: $border-radius;
+    cursor: pointer;
+  }
+
+  img, video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Crops images to fill the container
+    border-radius: $border-radius;
+    box-shadow: 0 1px 3px rgba(#000, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  &:hover img, &:hover video {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(#000, 0.2);
+  }
+}
+
+// Make first thumbnail more square
+.engagement-item-first .engagement-thumbnail {
+  width: 160px;
+  height: 150px; // Square instead of rectangular
+  
+  @include breakpoint($small) {
+    width: 190px;
+    height: 180px; // Square on larger screens too
+  }
+}
+
+.engagement-item .engagement-content {
+  order: 1; // Ensure content appears on the left
+}
+
+/*
+   Cover art credit tag
+   ========================================================================== */
+
+.cover-art-tag {
+  display: inline-block;
+  margin-top: 0.5em;
+  padding: 0.25em 0.75em;
+  font-size: 0.85em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  
+  &__label {
+    color: #666;
+    margin-right: 0.5em;
+  }
+  
+  &__link {
+    color: rgb(89, 115, 141);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+      color: rgb(69, 95, 121);
+    }
+  }
+  
+  &__text {
+    color: rgb(89, 115, 141);
+  }
+}
+
+/*
+   Publication video dropdown
+   ========================================================================== */
+
+.publication-video {
+  margin-top: -1em; // Negative margin to bring it closer to publication above
+  margin-bottom: 1em;
+  padding: 0.75em;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: $border-radius;
+  
+  summary {
+    font-weight: 500;
+    list-style: none;
+    user-select: none;
+    
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
+    &::before {
+      content: "▶ ";
+      display: inline-block;
+      margin-right: 0.5em;
+      transition: transform 0.2s;
+    }
+  }
+  
+  &[open] summary::before {
+    transform: rotate(90deg);
+  }
+  
+  summary:hover {
+    text-decoration: underline;
+  }
+  
+  p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+  }
+}

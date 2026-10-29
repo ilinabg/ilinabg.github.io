@@ -1,0 +1,26 @@
+# main links links
+main:
+  - title: "Research"
+    url: /research/
+  - title: "Public Engagement"
+    url: /public-engagement/
+  # - title: "Miscellaneous"
+  #   url: /miscellaneous/
+
+  # - title: "Talks"
+  #   url: /talks/    
+
+  # - title: "Teaching"
+  #   url: /teaching/    
+    
+  # - title: "Portfolio"
+  #   url: /portfolio/
+        
+  # - title: "Blog Posts"
+  #   url: /year-archive/
+    
+  # - title: "CV"
+  #   url: /cv/
+    
+  # - title: "Guide"
+  #   url: /markdown/

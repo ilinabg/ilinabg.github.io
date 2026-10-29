@@ -1,0 +1,12 @@
+{% comment %}
+  image: full-size image opened on click.
+  thumb: optional small image shown on the page (defaults to image).
+{% endcomment %}
+{% if include.image %}
+{% assign thumb = include.thumb | default: include.image %}
+<div class="publication-thumbnail">
+  <a href="{{ include.image }}" class="image-popup">
+    <img src="{{ thumb }}" alt="{{ include.alt | default: 'Publication thumbnail' }}" loading="lazy" decoding="async">
+  </a>
+</div>
+{% endif %}
