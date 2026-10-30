@@ -14,6 +14,14 @@ Thumbnails: put a small copy (about 480 px wide) in `images/thumbs/` and pass it
 
 ## Preview locally
 
+One-time setup (only needed once per machine, or if the `mysite` conda env's Ruby is reinstalled). The gem wrapper scripts expect a `ruby` binary next to them that conda doesn't create, so add the missing symlink:
+
+```
+ln -sf ../../../bin/ruby /Users/ilinabg/miniconda3/envs/mysite/share/rubygems/bin/ruby
+```
+
+Then, to serve:
+
 ```
 conda activate mysite
 bundle exec jekyll serve

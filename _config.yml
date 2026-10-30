@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Ilina Bhaya-Grossman"
 title_separator          : "-"
 name                     : &name "Ilina Bhaya-Grossman"
-description              : &description "PhD student, UCSF-UC Berkeley"
+description              : &description "Postdoctoral Researcher, Stanford University"
 url                      : "https://ilinabhayagrossman.com" # switch to https://ilinabhayagrossman.com when ready
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ilinabg/ilinabg.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Ilina Bhaya-Grossman"
   avatar           : "profile.jpg"
-  bio              : "PhD student, UCSF-UC Berkeley"
+  bio              : "Postdoctoral Researcher, Stanford University"
   location         :
   employer         :
   pubmed           : 
